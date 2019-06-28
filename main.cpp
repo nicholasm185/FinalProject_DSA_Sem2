@@ -16,30 +16,7 @@ int main() {
     Hashtable<200> T;
     string filename = "saved.txt";
     vector<Data> data;
-    //debugging and test code
 
-//    read(filename, T, usedHashes);
-
-//    insert(T,usedHashes);
-//
-//    search(T);
-
-
-//    T.insert_item("new","shit","in","32423532","OB");
-//    usedHashes.insert(T.hashfunc("new")%200);
-
-//    set<int>::iterator itr;
-//    for(itr = usedHashes.begin(); itr != usedHashes.end(); itr++){
-//        cout << *itr << endl;
-//    }
-
-//    write(filename, T, usedHashes);
-
-
-//    usedHashes.insert(T.insert_item("boi", "rekt", "dead", "243523552", "director"));
-//    T.insert_item("boi", "rekt", "dead", "243523552", "director");
-//    usedHashes.insert(T.insert_item("iob", "bitch", "dead", "243523552", "director"));
-//    usedHashes.insert(T.insert_item("jing","dog","dog","2222222","ampas"));
     //main UI loop
     cout << "|<<<<<<<<<<< |      WELCOME TO       | >>>>>>>>>>>|" << endl;
     cout << "|<<<<<<<<<<< | MANAGEMENT APPLICATION| >>>>>>>>>>>|" << endl;
