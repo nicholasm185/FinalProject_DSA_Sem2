@@ -14,21 +14,19 @@
 
 void search(Hashtable<200> T);
 
-void insert(Hashtable<200> &T, set<int> &usedHashes);
+void insert(Hashtable<200> &T, set<int> &usedHashes, int &numData);
 
 bool checknum(string x);
 
 vector<string> splitstring(string x);
 
-bool read(string filename, Hashtable<200> &hashtable, set<int> &usedHashes);
+bool read(string filename, Hashtable<200> &hashtable, set<int> &usedHashes, int &numdata);
 
 void write(string filename, Hashtable<200> &hashtable, set<int> usedHashes);
 
-string loadFile(string filename, Hashtable<200> &T, set<int> usedHashes);
+void employeeDelete(Hashtable<200> &T, int &numData);
 
-void employeeDelete(Hashtable<200> &T);
-
-string loadFile(string filename, Hashtable<200> &T, set<int> usedHashes);
+string loadFile(string filename, Hashtable<200> &T, set<int> usedHashes, int &numdata);
 
 string saveFile(string filename, Hashtable<200> &hashtable, set<int> usedHashes);
 

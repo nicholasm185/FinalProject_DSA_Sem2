@@ -40,10 +40,10 @@ public:
 
     }
     //delete item function
-    void del_item(string name, string lastName){
+    bool del_item(string name, string lastName){
 //    gets the hash value and position
         int pos = this->hashfunc(name) % this->size;
-        table[pos].deleteKey(name, lastName);
+        return table[pos].deleteKey(name, lastName);
 
     }
     vector<Data> getRawStruct(int position){

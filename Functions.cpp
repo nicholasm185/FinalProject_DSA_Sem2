@@ -19,7 +19,7 @@ vector<string> splitstring(string x){
     return data;
 }
 //read filename based on filename string and inserts to the data structure
-bool read(string filename, Hashtable<200> &hashtable, set<int> &usedHashes) {
+bool read(string filename, Hashtable<200> &hashtable, set<int> &usedHashes, int &numdata) {
     ifstream readFile;
     readFile.open(filename);
     if (readFile.good()) {
@@ -36,13 +36,15 @@ bool read(string filename, Hashtable<200> &hashtable, set<int> &usedHashes) {
 
             usedHashes.insert(hashtable.hashfunc(processed[0])%200);
 
-            cout <<"|" <<setfill(' ')<<setw(20)<< processed[0] <<"|" <<setfill(' ')<<setw(20)<< processed[1]<<"|"<< endl;
+            cout <<"|" <<setfill(' ')<<setw(20)<< processed[0] <<"|" <<setfill(' ')<<setw(20)<< processed[2]<<"|"<< endl;
+
+            numdata++;
         }
         readFile.close();
         return true;
     }
     else {
-        cout << "file not found\n";
+        cout << "FILE NOT FOUND\n\n";
         return false;
     }
 }
@@ -97,7 +99,7 @@ bool checknum(string x){
     return true;
 }
 //inserts new data into file
-void insert(Hashtable<200> &T, set<int> &usedHashes){
+void insert(Hashtable<200> &T, set<int> &usedHashes, int &numData){
     string firstname;
     string middlename;
     string lastname;
@@ -156,6 +158,7 @@ void insert(Hashtable<200> &T, set<int> &usedHashes){
         }
     }
     usedHashes.insert(T.insert_item(firstname,middlename,lastname,phonenumber,position));
+    numData++;
 }
 //search function based on firstname and lastname
 void search(Hashtable<200> T){
@@ -173,7 +176,7 @@ void search(Hashtable<200> T){
         }
     }
     while(!ok){
-        cout << "\nInsert middle name [3...20]: ";
+        cout << "\nInsert last name name [3...20]: ";
         cin >> lastname;
         cin.ignore();
         if(lastname.length() >= 3 and lastname.length() <= 20){
@@ -186,7 +189,7 @@ void search(Hashtable<200> T){
 
 }
 //delete employee function baed on name
-void employeeDelete(Hashtable<200> &T){
+void employeeDelete(Hashtable<200> &T, int &numData){
     string firstname;
     string lastname;
     bool ok = true;
@@ -210,16 +213,20 @@ void employeeDelete(Hashtable<200> &T){
             cout << "\ninvalid input\n";
         }
     }
-    T.del_item(firstname,lastname);
+    if(T.del_item(firstname,lastname)){
+        numData--;
+    } else{
+        cout << "\n****************\n*Item not found*\n****************\n";
+    }
 
 
 }
 //load existing file and chooses filename
-string loadFile(string filename, Hashtable<200> &T, set<int> usedHashes){
+string loadFile(string filename, Hashtable<200> &T, set<int> usedHashes, int &numdata){
     string choice;
     bool ok = true;
     while(ok){
-        cout << "do you want to use the default/previously used save file[Y/N}?";
+        cout << "Do you want to use the default/previously used save file[Y/N}?";
         cin>>choice;
         cin.ignore();
         if(choice.compare("Y")==0){
@@ -228,7 +235,7 @@ string loadFile(string filename, Hashtable<200> &T, set<int> usedHashes){
         else if(choice.compare("N")==0){
             ok = false;
         }else{
-            cout << "\ninvalid input\n";
+            cout << "\nInvalid Input\n";
         }
     }
     if(choice.compare("N")==0){
@@ -239,11 +246,11 @@ string loadFile(string filename, Hashtable<200> &T, set<int> usedHashes){
             if(filename.length() >= 3 and filename.length() <= 20){
                 ok = true;
             } else{
-                cout << "\ninvalid input\n";
+                cout << "\nInvalid input!\n";
             }
         }
     }
-    read(filename,T,usedHashes);
+    read(filename,T,usedHashes, numdata);
     return filename;
 
 }

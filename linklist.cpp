@@ -93,18 +93,20 @@ public:
         return x;
     }
     //delete function based on name and lastName
-    void deleteKey(string name,string lastName){
+    bool deleteKey(string name,string lastName){
         Node *curr = head;
         Node *temp;
         if (head ==nullptr){
             cout<< "Nothing here";
+            return false;
         }
         else if(curr->next == nullptr){
             if (curr->name == name && curr->lastName == lastName){
-                cout<< lastName << " entry has been deleted.";
+                cout<< lastName << " entry has been deleted.\n";
                 temp = curr;
                 head = curr->next;
                 delete temp;
+                return true;
 
             }
         }
@@ -114,6 +116,7 @@ public:
             temp = head;
             head = curr;
             delete temp;
+            return true;
         }
         else{
             while(curr->next != nullptr){
@@ -122,7 +125,7 @@ public:
                     temp = curr->next;
                     curr->next= curr->next->next;
                     delete temp;
-                    break;
+                    return true;
                 }
                 curr= curr->next;
             }
@@ -142,7 +145,7 @@ public:
                     << "\nLast Name:   " << curr-> lastName
                     << "\nPhone number:" << curr->phoneNumber
                     << "\nposition:    " << curr->position
-                    << "\n*****************************************";
+                    << "\n*****************************************\n";
                     status = true;
 
                 }
