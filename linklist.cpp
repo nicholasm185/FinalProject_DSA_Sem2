@@ -2,6 +2,7 @@
 #include<string>
 #include<iostream>
 #include<vector>
+#include <iomanip>
 using namespace std;
 
 //Node struct template for all data storage and pointers
@@ -130,6 +131,7 @@ public:
                 curr= curr->next;
             }
         }
+        return false;
     }
     //view specific data
     bool viewOnName(string Name, string lastName){
@@ -181,6 +183,24 @@ public:
         }
         return data;
     }
+
+    void viewonfirst(string firstname) {
+        cout << "|" << setfill('-') << setw(20) << "first Name" << "|" << setfill('-') << setw(19) << "Last Name" << "|"
+             << endl;
+        Node *curr = head;
+        bool status = false;
+        if (!this->empty()) {
+            while (curr != nullptr) {
+                if (firstname == curr->name) {
+                    cout << "|" << setfill(' ') << setw(20) << curr->name << "|" << setfill(' ') << setw(20)
+                         << curr->lastName << "|" << endl;
+
+                }
+                curr = curr->next;
+            }
+        }
+    }
+
 
 
 };

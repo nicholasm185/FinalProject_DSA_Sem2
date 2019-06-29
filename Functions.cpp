@@ -188,6 +188,23 @@ void search(Hashtable<200> T){
     T.search(firstname, lastname);
 
 }
+
+void searchfirst(Hashtable<200> T){
+    string firstname;
+    bool ok = true;
+    while(ok){
+        cout << "Insert first name [3...20]: ";
+        cin >> firstname;
+        cin.ignore();
+        if(firstname.length() >= 3 and firstname.length() <= 20){
+            ok = false;
+        } else{
+            cout << "\ninvalid input\n";
+        }
+    }
+    T.viewfirst(firstname);
+}
+
 //delete employee function baed on name
 void employeeDelete(Hashtable<200> &T, int &numData){
     string firstname;

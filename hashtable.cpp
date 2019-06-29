@@ -50,6 +50,12 @@ public:
         return  table[position].getAllValues();
     }
 
+//    view all first names
+    void viewfirst(string firstname){
+        int pos = this->hashfunc(firstname) % this->size;
+        return table[pos].viewonfirst(firstname);
+    }
+
 
 
 };
